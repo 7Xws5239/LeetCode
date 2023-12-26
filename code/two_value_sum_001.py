@@ -17,22 +17,49 @@ class Solution2:
     @classmethod
     def change_test2(self, test2): #如果是静态方法就没有self参数了
         self.test2 = test2
+    @staticmethod
+    def static_method(cls):
+        print("static_method")
+    @staticmethod
+    def static_method_with_self(self):
+        print("static_method_with_self")
+class NameInfo:
+    _name = "_name is here." #这是一个命名规定，说明这是私有的from module import *的时候不会被导入
+    __name = "__name is here." #这是会自动改名的
+    def __name__(self) -> None:
+        return "this is __name__ method."
+    def print_name(self):
+        print(self._name)
+        print(self.__name)
+        print(self._NameInfo__name)
+
+NameInfo().print_name()
+
+# value1 = NameInfo._name = "this is _name."
+# value2 = NameInfo.__name = "this is __name."
+# value3 = NameInfo().__name__()
+# print(value1)
+# print(value2)
+# print(value3)
 
 # 这种写法是错误的，因为这里面不是一个类方法或静态方法,也不是一个类属性
 # print("test1: ", Solution.test1)
 # Solution.change_test1(test1="test1")
 # print("test1: ", Solution.test1)
 
-sln_instance = Solution()
-# Solution.__init__() #这个是不能这样用的
-print("test1: ", sln_instance.test1)
-sln_instance.change_test1(test1="test1")
-print("test1: ", sln_instance.test1)
+# sln_instance = Solution()
+# # Solution.__init__() #这个是不能这样用的
+# print("test1: ", sln_instance.test1)
+# sln_instance.change_test1(test1="test1")
+# print("test1: ", sln_instance.test1)
 
-Solution2.__init__()
-print("test2: ", Solution2.test2)
-Solution2.change_test2(test2="test2")
-print("test2: ", Solution2.test2)
+# Solution2.__init__()
+# print("test2: ", Solution2.test2)
+# Solution2.change_test2(test2="test2")
+# print("test2: ", Solution2.test2)
+
+# Solution2.static_method(Solution2)
+# Solution2.static_method_with_self("test")
 
 '''
 在您的代码中，您对 `Solution` 和 `Solution2` 类的处理方式有些混淆，尤其是在如何正确使用构造函数（`__init__`）和类方法上。我将逐个解释这些问题以及为什么 `Solution.__init__()` 的调用会出错，而 `Solution2.__init__()` 能够正常工作。
