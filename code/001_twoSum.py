@@ -60,12 +60,42 @@
 ############################################################################### Better Choice #############################################################################
 
 #上面的方案执行时间 1836ms，而这个方案执行时间 36ms，差距太大了，必须学会
+
 from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hash_map = {}
         for i, nums_value in enumerate(nums):
-            
+            hash_map[nums_value] = i
+        print(hash_map)
+        for i, nums_value in hash_map:
+            complement = target - nums_value
+            if complement == 
+
+#---------------------------------------错误写法-------------------
+# from typing import List
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         hash_map = {}
+#         for i, nums_value in enumerate(nums):
+#             hash_map[i] = nums_value
+#         for i, nums_value in nums:
+#             complement = target - nums_value
+#             if complement in hash_map:
+#                 return i,
+
+        
+#         print(hash_map)
+# #这种写法只是对于List内容的简单重复，但并不适用于这个问题。
+# #我们最终需要拿到下标，因此也需要可以简单地获取到下标的方法。
+#---------------------------------------错误写法-------------------
+
+sln_instance = Solution()
+nums = [11,15,2,7]
+target = 9
+result = sln_instance.twoSum(nums, target)
+
+
 
 
 
