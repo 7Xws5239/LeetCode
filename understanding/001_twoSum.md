@@ -1,3 +1,14 @@
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash_map = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in hash_map:
+                return [hash_map[complement], i]
+            hash_map[num] = i
+```            
+
 当然，我很乐意详细解释这种使用哈希表的解决方案。这种方法是解决“两数之和”问题的高效方式。让我们一步一步来分析：
 
 ### 基本思想：

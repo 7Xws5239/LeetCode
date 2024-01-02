@@ -65,14 +65,25 @@ from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hash_map = {}
-        for i, nums_value in enumerate(nums):
-            hash_map[nums_value] = i
-        print(hash_map)
-        for i, nums_value in hash_map:
-            complement = target - nums_value
-            if complement == 
 
-#---------------------------------------错误写法-------------------
+#---------------------------------------错误写法1-------------------
+# from typing import List
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         hash_map = {}
+#         for i, nums_value in enumerate(nums): #这种处理方式会导致对于同样的key，后面的索引会覆盖前面的索引
+#             hash_map[nums_value] = i
+#         print(hash_map)
+#         for key, index in hash_map.items(): #这个前面是key，后面是value，后面实际上是索引编号
+#             complement = target - key
+#             if (complement in hash_map) and (hash_map[complement]!=index): #这边右边的限制是防止自己和自己相加
+
+#                 return index,hash_map[complement]
+# #这种写法处理不了同样key的问题，后面的index会覆盖前面的，导致结果出问题。
+#---------------------------------------错误写法1-------------------
+            
+
+#---------------------------------------错误写法2-------------------
 # from typing import List
 # class Solution:
 #     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -91,9 +102,13 @@ class Solution:
 #---------------------------------------错误写法-------------------
 
 sln_instance = Solution()
-nums = [11,15,2,7]
-target = 9
+# nums = [11,15,2,7]
+# nums = [2,7,11,5]
+# nums = [3,2,4]
+nums = [3,3]
+target = 6
 result = sln_instance.twoSum(nums, target)
+print(result)
 
 
 
