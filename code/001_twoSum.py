@@ -61,10 +61,24 @@
 
 #上面的方案执行时间 1836ms，而这个方案执行时间 36ms，差距太大了，必须学会
 
+# from typing import List
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         hash_map = {}
+#         for i,nums_value in enumerate(nums):
+#             hash_map[nums_value] = i
+#         return hash_map
+
 from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         hash_map = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in hash_map:
+                return [hash_map[complement], i]
+            hash_map[num] = i
+# 这个东西的思路是后加数据，前面找不到的，靠后面找前面加上去的。
 
 #---------------------------------------错误写法1-------------------
 # from typing import List
@@ -102,11 +116,11 @@ class Solution:
 #---------------------------------------错误写法-------------------
 
 sln_instance = Solution()
-# nums = [11,15,2,7]
+nums = [11,15,-2]
 # nums = [2,7,11,5]
 # nums = [3,2,4]
-nums = [3,3]
-target = 6
+# nums = [3,3]
+target = 9
 result = sln_instance.twoSum(nums, target)
 print(result)
 
