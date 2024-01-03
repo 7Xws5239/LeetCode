@@ -12,7 +12,8 @@ class Solution:
             # print(i,nums[i])
             if nums[i] == 1:
                 count = count + 1
-                after_check_count = count
+                if count > after_check_count:
+                    after_check_count = count
             elif nums[i] == 0:
                 if count > after_check_count:
                     after_check_count = count
@@ -22,8 +23,8 @@ class Solution:
         
         return after_check_count
 
-# nums = [1,1,0,1,1,1]
-nums = [1,0,1,1,0,1]
+nums = [1,1,0,1,1,1]
+# nums = [1,0,1,1,0,1]
 sln_ins = Solution()
 result = sln_ins.findMaxConsecutiveOnes(nums)
 print(result)
