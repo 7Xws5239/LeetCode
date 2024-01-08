@@ -22,6 +22,8 @@ class Solution:
         # 将剩余的位置都填充为零
         for i in range(lastNonZeroFoundAt, len(nums)):
             nums[i] = 0
+        for i in range(0,len(nums)):
+            print(nums[i])
 #############################标准解法#############################
 
 
@@ -58,7 +60,8 @@ class Solution:
 
 # nums = [0,1,0,3,12]
 # nums = [0]  
-nums = [0,0,1]                      
+# nums = [0,0,1]  
+nums = [1,0,3,0,4,5,0]                    
 
 sln = Solution()
 result = sln.moveZeroes(nums)
