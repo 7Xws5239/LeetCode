@@ -59,4 +59,35 @@ new_head = solution.removeElements(head, val_to_remove)
 
 # 打印结果
 print(f"List after removing {val_to_remove}:")
-print_list(new_head)                            
+print_list(new_head)          
+
+# ############################################### 数据结构部分 ############################################################
+
+# from typing import Optional
+
+# # print(5 + " -> ")
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+# def create_listnode(arr):
+#     head = ListNode(arr[0])
+#     current = head
+#     for item in arr [1:]:
+#         current.next = ListNode(item)
+#         current = current.next
+#     return head
+
+# def print_listnode(node: ListNode):
+#     while(node):
+#         print(node.val, end = " -> ")
+#         node = node.next
+#     print('None')
+
+# arr = [1,2,3,4,5]
+
+# listnode = create_listnode(arr)
+# print_listnode(listnode)
+
+# ############################################### 数据结构部分 ############################################################
