@@ -13,3 +13,40 @@ deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真
 isEmpty(): 检查循环队列是否为空。
 isFull(): 检查循环队列是否已满。
 '''
+
+class MyCircularQueue:
+
+    def __init__(self, k: int):
+        self.k = k
+        self.queue = [None] * k
+        self.head = self.tail = -1
+
+    def enQueue(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        if self.isEmpty():
+            self.head = 0
+        self.tail = (self.tail + 1) % self.k
+        self.queue[self.tail] = value
+        return True
+
+    def deQueue(self) -> bool:
+        if self.isEmpty():
+            return False
+        if self.head == self.tail:
+            self.head = self.tail = -1
+        else:
+            self.head = (self.head + 1) % self.k
+        return True
+
+    def Front(self) -> int:
+        return -1 if self.isEmpty() else self.queue[self.head]
+
+    def Rear(self) -> int:
+        return -1 if self.isEmpty() else self.queue[self.tail]
+
+    def isEmpty(self) -> bool:
+        return self.head == -1
+
+    def isFull(self) -> bool:
+        return (self.tail + 1) % self.k == self.head
