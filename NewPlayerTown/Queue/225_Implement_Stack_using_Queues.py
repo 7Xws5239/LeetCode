@@ -44,7 +44,7 @@ class MyStack:
         return not self.queue2
 
 ms = MyStack()
-
+result = ms.empty()
 ms.push(1)
 ms.push(2)
 ms.push(3)
