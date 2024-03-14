@@ -10,16 +10,27 @@ int ping(int t) 在时间 t 添加一个新请求，其中 t 表示以毫秒为�
 from collections import deque
 class RecentCounter:
     def __init__(self) -> None:
-        self.queue = deque()
+        self.queue = deque() #我不确定我的理解对不对，这里可能不应该理解为点到queue，因为这里是一个定义，所以它的意思应该是拿到这个属性
+                             #另外，这里的deque不是表示删除的意思，这是一个双端队列
 
-def ping(self,t):
-    self.queue.append(t)
+    def ping(self,t):
+        self.queue.append(t)
 
-    while self.queue[0] < t-3000:
-        self.queue.popleft()
-    
-    return len(self.queue)
+        while self.queue[0] < t-3000:
+            self.queue.popleft()
+        
+        return len(self.queue)
 
 
+obj = RecentCounter()
+t1=1
+t2=100
+t3=3001
+t4=3002
+obj.ping(t1)
+obj.ping(t2)
+obj.ping(t3)
+number_of_requests = obj.ping(t4)
 
+print(number_of_requests)
 
