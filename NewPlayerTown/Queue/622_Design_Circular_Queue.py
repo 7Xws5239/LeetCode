@@ -17,7 +17,7 @@ isFull(): 检查循环队列是否已满。
 class MyCircularQueue:
 
     def __init__(self, k: int):
-        self.k = k
+        self.k = k #我目前对这里的理解是，这个self主要是一个象征作用，主要是用于表示这个属性的作用范围的
         self.queue = [None] * k
         self.head = self.tail = -1
 
