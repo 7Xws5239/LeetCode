@@ -70,3 +70,26 @@ class MyCircularQueue:
 
     def isFull(self) -> bool:
         return (self.tail + 1) % self.k == self.head
+
+
+
+# Your MyCircularQueue object will be instantiated and called as such:
+obj = MyCircularQueue(3) # 设置长度为3
+param_1 = obj.enQueue(1) # 返回true
+print(param_1)
+param_1 = obj.enQueue(2) # 返回true
+print(param_1)
+param_1 = obj.enQueue(3) # 返回true
+print(param_1)
+param_1 = obj.enQueue(4) # 返回false，队列已满
+print(param_1)
+param_2 = obj.Rear() # 返回3
+print(param_2)
+param_3 = obj.isFull() # 返回true
+print(param_3)
+param_4 = obj.deQueue() # 返回true
+print(param_4)
+param_5 = obj.enQueue(4) # 返回true
+print(param_5)
+param_6 = obj.Rear() #返回4
+print(param_6)
