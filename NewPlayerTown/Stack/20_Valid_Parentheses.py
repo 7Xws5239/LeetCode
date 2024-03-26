@@ -58,4 +58,4 @@ test_cases = ["()", "()[]{}", "(]"]
 
 # 对每个测试示例调用isValid方法，并打印结果
 results = {test_case: solution.isValid(test_case) for test_case in test_cases}
-results
+print(results)
