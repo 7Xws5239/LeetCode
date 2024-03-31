@@ -45,7 +45,7 @@ myQueue.empty(); // return false
 class MyQueue:
     def __init__(self):
         # 初始化两个栈，一个用于入队，一个用于出队
-        self.in_stack = []
+        self.in_stack = [] #请注意，这里的两个对象实际上都是列表，但是python的列表比较特殊，它是具有栈操作特性的。
         self.out_stack = []
 
     def push(self, x: int) -> None:
@@ -68,7 +68,7 @@ class MyQueue:
             while self.in_stack:
                 self.out_stack.append(self.in_stack.pop())
         # 返回out_stack栈顶元素，但不弹出，即队首元素
-        return self.out_stack[-1]
+        return self.out_stack[-1] #这里的‘-1’是因为python中负数索引可以获取倒数的元素，这里的负一是倒数第一个元素的意思
 
     def empty(self) -> bool:
         # 判断队列是否为空
