@@ -22,78 +22,55 @@
 1 <= k <= nums.length <= 105
 -104 <= nums[i] <= 104
 '''
-
+import heapq
 from typing import List
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         """
-        使用快速选择算法找到数组中第k个最大的元素。
-        
-        参数:
-        nums: List[int] -- 输入的整数数组
-        k: int -- 指定的第k大的元素位置
-        
-        返回:
-        int -- 数组中第k个最大的元素
+        寻找数组中第k个最大的元素
+        :param nums: List[int] 输入的整数数组
+        :param k: int 第k大的元素
+        :return: int 第k个最大的元素
         """
+        # 初始化一个空堆
+        heap = []
+        # 遍历数组中的前k个元素，构建大小为k的最小堆
+        for i in range(k):
+            heapq.heappush(heap, nums[i])
         
-        # 将问题转化为找第 len(nums) - k 小的元素
-        k = len(nums) - k
-        
-        def partition(left, right, pivot_index):
-            """
-            根据枢纽元素对数组进行分区。
-            
-            参数:
-            left: int -- 分区的左边界
-            right: int -- 分区的右边界
-            pivot_index: int -- 枢纽元素的索引
-            
-            返回:
-            int -- 分区后枢纽元素的最终位置
-            """
-            pivot = nums[pivot_index]
-            # 先把枢纽元素交换到末尾
-            nums[pivot_index], nums[right] = nums[right], nums[pivot_index]
-            
-            store_index = left
-            for i in range(left, right):
-                if nums[i] < pivot:
-                    nums[store_index], nums[i] = nums[i], nums[store_index]
-                    store_index += 1
-            
-            # 把枢纽元素移动到其最终位置
-            nums[right], nums[store_index] = nums[store_index], nums[right]
-            return store_index
-        
-        def select(left, right):
-            """
-            找到并返回第k小的元素。
-            
-            参数:
-            left: int -- 查找区间的左边界
-            right: int -- 查找区间的右边界
-            
-            返回:
-            int -- 第k小的元素
-            """
-            if left == right:
-                return nums[left]
-            
-            pivot_index = left
-            pivot_index = partition(left, right, pivot_index)
-            
-            if k == pivot_index:
-                return nums[k]
-            elif k < pivot_index:
-                return select(left, pivot_index - 1)
-            else:
-                return select(pivot_index + 1, right)
-        
-        return select(0, len(nums) - 1)
+        # 继续遍历数组中剩余的元素
+        for i in range(k, len(nums)):
+            # 如果当前元素大于堆顶元素，替换之
+            if nums[i] > heap[0]:
+                heapq.heappop(heap)  # 弹出堆顶最小元素
+                heapq.heappush(heap, nums[i])  # 加入当前元素
+                
+        # 最终，堆顶元素即为第k个最大元素
+        return heap[0]
 
-# 示例使用
-solution = Solution()
-print(solution.findKthLargest([3,2,1,5,6,4], 2))  # 应输出5
-print(solution.findKthLargest([3,2,3,1,2,4,5,5,6], 4))  # 应输出4
+# # # 测试代码
+# # if __name__ == '__main__':
+# #     solution = Solution()
+# #     print(solution.findKthLargest([3,2,1,5,6,4], 2))  # 输出: 5
+# #     print(solution.findKthLargest([3,2,3,1,2,4,5,5,6], 4))  # 输出: 4
+
+
+######################################## 饲养员的解法
+
+# from heapq import heapify, heappush, heappop
+
+# class Solution:
+#     # Leetcode 215. Kth Largest Element in an Array
+#     # Heap
+#     # N is the size of nums
+#     # Time Complexity: O(NlogK)
+#     # Space Complexity: O(N)
+#     def findKthLargest(self, nums: List[int], k: int) -> int:
+#         minheap = []
+#         heapify(minheap)
+#         for num in nums:
+#             heappush(minheap, num)
+#             if len(minheap) > k:
+#                 heappop(minheap)
+#         return minheap[0]
