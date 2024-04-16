@@ -48,6 +48,7 @@ class MyHashSet:
         """
         self.bucketCount = 769  # 使用质数作为桶的数量，可以帮助减少冲突
         self.buckets = [None] * self.bucketCount
+        # 是在创建一个包含769个元素的列表，其中每个元素初始时都被设置为`None`。这意味着每个桶一开始都是空的，没有存储任何元素。
 
     def hash(self, key: int) -> int:
         """
