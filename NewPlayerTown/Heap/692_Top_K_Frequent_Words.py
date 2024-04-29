@@ -49,7 +49,7 @@ class Solution:
         # 第二个元素是单词本身，这里使用负值是为了让频率高的元素在堆顶
         # 注意：由于Python的heapq实现是最小堆，为了让频率高的单词排在前面，我们将频率取负值
         # 同时，对于相同频率的单词，我们希望按字典序逆序排列，以确保当它们被pop时，字典序小的在前
-        heap = [(-freq, word) for word, freq in count.items()]
+        heap = [(-freq, word) for word, freq in count.items()] # 在堆中，元素按照其第一个元素（在这里是负频率）的大小进行排序。
         heapq.heapify(heap)  # 将列表转换成堆结构
         
         # 从堆中取出前k个元素，这里直接使用heapq的nlargest方法
