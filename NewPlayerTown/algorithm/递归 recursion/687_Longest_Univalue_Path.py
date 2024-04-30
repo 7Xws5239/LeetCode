@@ -3,7 +3,7 @@
 
 两个节点之间的路径长度 由它们之间的边数表示。
 '''
-
+from typing import Optional
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
