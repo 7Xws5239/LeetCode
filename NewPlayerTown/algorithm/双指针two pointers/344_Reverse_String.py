@@ -13,7 +13,7 @@ class Solution:
         :param s: 字符列表
         """
         # 初始化两个指针，left指向数组的开始，right指向数组的末尾
-        left, right = 0, len(s) - 1
+        left, right = 0, len(s) - 1 # 这种做法也叫“并行赋值”或者“元组解包”，用于同时初始化两个变量，等价于 left=0 加上 right=len(s)-1
         
         # 当left小于right时，继续执行循环
         while left < right:
